@@ -273,6 +273,7 @@
     --radius: 14px;
     --spacing-8xl: 90rem;
     --leading-9: 36px;
+    --leading-8: 32px;
     --leading-6: 24px;
     --leading-5: 20px;
     --radius-base: 20px;
@@ -294,6 +295,7 @@
     --color-brand-strong: var(--color-pink-800);
     --color-success: var(--color-green-700);
     --color-danger: var(--color-red-700);
+    --color-warning: var(--color-orange-500);
     --color-dark: var(--color-slate-800);
     --color-light: var(--color-slate-100);
     --color-default: var(--color-slate-200);
@@ -858,11 +860,20 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .ms-1\.5 {
+    margin-inline-start: calc(var(--spacing) * 1.5);
+  }
+  .-me-0\.5 {
+    margin-inline-end: calc(var(--spacing) * -0.5);
+  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
   }
   .apexcharts-canvas {
     & .apexcharts-tooltip {
@@ -1157,6 +1168,9 @@
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
   }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
   .apexcharts-xaxistooltip {
     .apexcharts-canvas & {
       color: var(--color-body) !important;
@@ -1190,6 +1204,9 @@
   }
   .ml-auto {
     margin-left: auto;
+  }
+  .box-border {
+    box-sizing: border-box;
   }
   .datatable-pagination-list-item-link {
     .datatable-wrapper .datatable-bottom .datatable-pagination & {
@@ -1379,6 +1396,9 @@
   }
   .max-w-md {
     max-width: var(--container-md);
+  }
+  .max-w-sm {
+    max-width: var(--container-sm);
   }
   .datatable-input {
     .datatable-wrapper .datatable-search & {
@@ -1695,6 +1715,9 @@
   .border-transparent {
     border-color: transparent;
   }
+  .border-warning {
+    border-color: var(--color-warning);
+  }
   .apexcharts-active {
     .apexcharts-canvas .apexcharts-tooltip-series-group& .apexcharts-tooltip-y-group {
       padding: 0 !important;
@@ -1940,6 +1963,10 @@
   .text-left {
     text-align: left;
   }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
   .text-base {
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
@@ -2026,6 +2053,10 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
+  .tracking-tight {
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+  }
   .whitespace-nowrap {
     white-space: nowrap;
   }
@@ -2082,6 +2113,9 @@
   }
   .text-success {
     color: var(--color-success);
+  }
+  .text-warning {
+    color: var(--color-warning);
   }
   .text-white {
     color: var(--color-white);
@@ -2207,6 +2241,13 @@
       }
     }
   }
+  .hover\:bg-brand {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-brand);
+      }
+    }
+  }
   .hover\:bg-brand-strong {
     &:hover {
       @media (hover: hover) {
@@ -2256,6 +2297,13 @@
       }
     }
   }
+  .hover\:bg-warning {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-warning);
+      }
+    }
+  }
   .hover\:bg-white {
     &:hover {
       @media (hover: hover) {
@@ -2288,13 +2336,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-white);
-      }
-    }
-  }
-  .hover\:underline {
-    &:hover {
-      @media (hover: hover) {
-        text-decoration-line: underline;
       }
     }
   }
@@ -2334,6 +2375,11 @@
   .focus\:ring-brand-medium {
     &:focus {
       --tw-ring-color: var(--color-brand-medium);
+    }
+  }
+  .focus\:ring-brand-subtle {
+    &:focus {
+      --tw-ring-color: var(--color-brand-subtle);
     }
   }
   .focus\:ring-gray-200 {
@@ -3356,6 +3402,10 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-shadow {
   syntax: "*";
   inherits: false;
@@ -3516,6 +3566,7 @@
       --tw-border-style: solid;
       --tw-leading: initial;
       --tw-font-weight: initial;
+      --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;

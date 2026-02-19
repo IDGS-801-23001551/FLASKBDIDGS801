@@ -34,6 +34,40 @@ def index():
 	alumno=Alumnos.query.all()
 	return render_template("index.html",form=create_from, alum=alumno)
 
+@app.route("/detalles",methods=['GET','POST'])
+def detalles():
+	if request.method=='GET':
+		id=request.args.get('id')
+		# Select * from alumnos where id==id
+		alum1=db.session.query(Alumnos).filter(Alumnos.id==id).first()
+		id=request.args.get('id')
+		nombre=alum1.nombre
+		apaterno=alum1.apaterno
+		email=alum1.email
+	return render_template("detalles.html",id=id,nombre=nombre,apaterno=apaterno,email=email)
+
+@app.route("/modificar", methods=['GET','POST'])
+def modificar():
+	create_form=forms.UserForm2(request.form)
+	if request.method=='GET':
+		id=request.args.get('id')
+		alum1=db.session.query(Alumnos).filter(Alumnos.id==id).first()
+		create_form.id.data=request.args.get('id')
+		create_form.nombre.data=str.rstrip(alum1.nombre)
+		create_form.apaterno.data=alum1.apaterno
+		create_form.correo.data=alum1.email
+	if request.method=='POST':
+		id=create_form.id.data
+		alum1=db.session.query(Alumnos).filter(Alumnos.id==id).first()
+		alum1.id=id
+		alum1.nombre=str.rstrip(create_form.nombre.data)
+		alum1.apaterno=create_form.apaterno.data
+		alum1.email=create_form.correo.data
+		db.session.add(alum1)
+		db.session.commit()
+		return redirect(url_for('index'))
+	return render_template("Modificar.html",form=create_form)
+
 if __name__ == '__main__':
 	csrf.init_app(app)
 	db.init_app(app)
