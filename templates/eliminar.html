@@ -11,13 +11,18 @@
         {{ form.nombre.label(class="absolute text-sm text-body") }}
   </div>
   <div class="relative z-0 w-full mb-5 group">
-      {{ form.apaterno(class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium focus:outline-none focus:ring-0 focus:border-brand peer") }}
-    {{ form.apaterno.label(class="absolute text-sm text-body") }}
+      {{ form.apellidos(class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium focus:outline-none focus:ring-0 focus:border-brand peer") }}
+    {{ form.apellidos.label(class="absolute text-sm text-body") }}
   </div>
   <div class="grid md:grid-cols-2 md:gap-6">
     <div class="relative z-0 w-full mb-5 group">
         {{ form.correo(class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium focus:outline-none focus:ring-0 focus:border-brand peer") }}
     {{ form.correo.label(class="absolute text-sm text-body") }}
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        {{ form.telefono(class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium focus:outline-none focus:ring-0 focus:border-brand peer") }}
+    {{ form.telefono.label(class="absolute text-sm text-body") }}
+    </div>
   </div>
 
   <button type="submit" class="text-success bg-neutral-primary border border-success hover:bg-success hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</button>
