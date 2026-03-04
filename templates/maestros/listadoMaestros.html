@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block container %}
+<a href="/AgregarMaestro" type="button" class="w-full text-center text-success bg-neutral-primary border border-success hover:bg-success hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Nuevo</a>
+
+</div>
+<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+    <table class="w-full text-sm text-left rtl:text-right text-body">
+        <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
+            <tr>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Nombre
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Apellidos
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Especialidad
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Editar
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Detalles
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Eliminar
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+          {%for maes in maes%}
+            <tr class="bg-neutral-primary-soft border-b  border-default">
+                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">{{maes.nombre}}
+                </th>
+               <td class="px-6 py-4">{{maes.apellidos}}</td>
+               <td class="px-6 py-4">{{maes.especialidad}}</td>
+               <td class="px-6 py-4">{{maes.email}}</td>
+                <td class="px-6 py-4">
+                    <a href="/modificarMaestro?matricula={{maes.matricula}}" type="button" class="text-warning bg-neutral-primary border border-warning hover:bg-warning hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Editar</a>
+                </td>
+                <td class="px-6 py-4">
+                    <a href="/detallesMaestro?matricula={{maes.matricula}}" type="button" class="text-fg-brand bg-neutral-primary border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</a>
+                </td>
+                <td class="px-6 py-4">
+                    <a href="/eliminarMaestro?matricula={{maes.matricula}}" type="button" class="text-danger bg-neutral-primary border border-danger hover:bg-danger hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</a>
+                </td>
+                
+            </tr>
+        {%endfor%}    
+        </tbody>
+    </table>
+</div>
+{%endblock%}

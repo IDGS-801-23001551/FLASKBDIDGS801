@@ -2,7 +2,7 @@
 
 {% block container %}
 {% import "_macros.html" as macros %}
-<form class="max-w-md mx-auto" action="/modificar" method="POST">
+<form class="max-w-md mx-auto" action="/eliminar" method="POST">
     {{ form.csrf_token }}
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
   {{ form.id(type="hidden") }}
@@ -25,8 +25,8 @@
     </div>
   </div>
 
-  <button type="submit" class="text-success bg-neutral-primary border border-success hover:bg-success hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Guardar</button>
+  <button type="submit" class="text-success bg-neutral-primary border border-success hover:bg-success hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</button>
 
-<a type="button" href="index.html" class="text-danger bg-neutral-primary border border-danger hover:bg-danger hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancelar</a>
+<a type="button" href="/Index" class="text-danger bg-neutral-primary border border-danger hover:bg-danger hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancelar</a>
 </form>
 {%endblock%}
