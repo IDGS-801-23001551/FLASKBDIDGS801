@@ -5,6 +5,7 @@ from flask import g
 from flask_migrate import  Migrate
 from Maestros.routes import maestros
 from Alumnos.routes import alumnos
+from Cursos.routes import cursos
 
 from config import DevelopmentConfig
 import forms
@@ -14,6 +15,7 @@ app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 app.register_blueprint(maestros)
 app.register_blueprint(alumnos)
+app.register_blueprint(cursos)
 csrf=CSRFProtect()
 db.init_app(app)
 migrate=Migrate(app, db)
@@ -21,6 +23,11 @@ migrate=Migrate(app, db)
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template('404.html'),404
+
+@app.route("/")
+@app.route("/Index")
+def listadoAlumnos():
+	return render_template("index.html")
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 from wtforms import Form, StringField
-from wtforms import SearchField,IntegerField,PasswordField,FloatField, RadioField
+from wtforms import SearchField,IntegerField,PasswordField,FloatField, RadioField, TextAreaField, SelectField, HiddenField
 from wtforms import EmailField
 from wtforms import validators
 
@@ -37,4 +37,15 @@ class UserForm3(Form):
         validators.DataRequired(message='el correo es requerido'),
         validators.Email(message="Ingresa correo valido")
     ])
-    
+
+class UserForm4(Form):
+    id = HiddenField("id")
+    nombre = StringField("Nombre", [
+        validators.DataRequired(message="El nombre es requerido")
+    ])
+    descripcion = TextAreaField("Descripcion")
+    maestro = SelectField(
+        "Maestro",
+        coerce=int,
+        validators=[validators.DataRequired(message="Selecciona un maestro")]
+    )

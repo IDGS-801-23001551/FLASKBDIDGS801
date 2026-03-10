@@ -273,7 +273,6 @@
     --radius: 14px;
     --spacing-8xl: 90rem;
     --leading-9: 36px;
-    --leading-8: 32px;
     --leading-6: 24px;
     --leading-5: 20px;
     --radius-base: 20px;
@@ -860,12 +859,6 @@
   .mx-auto {
     margin-inline: auto;
   }
-  .ms-1\.5 {
-    margin-inline-start: calc(var(--spacing) * 1.5);
-  }
-  .-me-0\.5 {
-    margin-inline-end: calc(var(--spacing) * -0.5);
-  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -1162,6 +1155,9 @@
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
+  .mb-2\.5 {
+    margin-bottom: calc(var(--spacing) * 2.5);
+  }
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
   }
@@ -1204,9 +1200,6 @@
   }
   .ml-auto {
     margin-left: auto;
-  }
-  .box-border {
-    box-sizing: border-box;
   }
   .datatable-pagination-list-item-link {
     .datatable-wrapper .datatable-bottom .datatable-pagination & {
@@ -2220,6 +2213,11 @@
       color: var(--color-fg-brand);
     }
   }
+  .placeholder\:text-body {
+    &::placeholder {
+      color: var(--color-body);
+    }
+  }
   .hover\:border-default {
     &:hover {
       @media (hover: hover) {
@@ -2370,6 +2368,11 @@
   .focus\:ring-blue-300 {
     &:focus {
       --tw-ring-color: var(--color-blue-300);
+    }
+  }
+  .focus\:ring-brand {
+    &:focus {
+      --tw-ring-color: var(--color-brand);
     }
   }
   .focus\:ring-brand-medium {

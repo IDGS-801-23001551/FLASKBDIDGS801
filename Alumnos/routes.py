@@ -1,7 +1,7 @@
 from . import alumnos
 import forms
 from flask import Flask, render_template, request, redirect, url_for
-from models import db, Alumnos
+from models import db, Alumnos, Curso
 
 
 @alumnos.route("/alumnos.html", methods=['GET','POST'])
@@ -14,15 +14,14 @@ def crearAlumnos():
 			   telefono=create_form.telefono.data)
 		db.session.add(alum)
 		db.session.commit()
-		return redirect(url_for('alumnos.index'))
+		return redirect(url_for('alumnos.listadoAlumnos'))
 	return render_template('alumnos/alumnos.html', form=create_form)
 
-@alumnos.route("/")
-@alumnos.route("/Index")
-def index():
+@alumnos.route("/listadoAlumnos")
+def listadoAlumnos():
 	create_from=forms.UserForm2(request.form)
 	alumno=Alumnos.query.all()
-	return render_template("alumnos/index.html",form=create_from, alum=alumno)
+	return render_template("alumnos/listadoAlumnos.html",form=create_from, alum=alumno)
 
 @alumnos.route("/detalles",methods=['GET','POST'])
 def detalles():
@@ -35,7 +34,8 @@ def detalles():
 		apellidos=alum1.apellidos
 		email=alum1.email
 		telefono=alum1.telefono
-	return render_template("alumnos/detalles.html",id=id,nombre=nombre,apellidos=apellidos,email=email, telefono=telefono)
+		cursos=alum1.cursos
+	return render_template("alumnos/detalles.html",id=id,nombre=nombre,apellidos=apellidos,email=email, telefono=telefono,cursos=cursos)
 
 @alumnos.route("/modificar", methods=['GET','POST'])
 def modificar():
@@ -58,7 +58,7 @@ def modificar():
 		alum1.telefono=create_form.telefono.data
 		db.session.add(alum1)
 		db.session.commit()
-		return redirect(url_for('alumnos.index'))
+		return redirect(url_for('alumnos.listadoAlumnos'))
 	return render_template("alumnos/Modificar.html",form=create_form)
 
 @alumnos.route('/eliminar', methods=['GET','POST'])
@@ -81,5 +81,5 @@ def eliminar():
 		if alum:
 			db.session.delete(alum)
 			db.session.commit()
-			return redirect(url_for('alumnos.index'))
+			return redirect(url_for('alumnos.listadoAlumnos'))
 	return render_template("alumnos/eliminar.html", form=create_form)

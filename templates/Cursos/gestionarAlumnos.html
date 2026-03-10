@@ -1,0 +1,96 @@
+        {% extends "layout.html" %}
+
+{% block container %}
+
+
+
+<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+    <div>
+    <h2>Gestionar alumnos del curso</h2>
+    <table class="w-full text-sm text-left rtl:text-right text-body">
+        <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
+            <tr>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Nombre
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Apellidos
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Email
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Eliminar
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+          {%for alum in alumnos_curso%}
+            <tr class="bg-neutral-primary-soft border-b  border-default">
+                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">{{alum.nombre}}
+                </th>
+               <td class="px-6 py-4">{{alum.apellidos}}</td>
+               <td class="px-6 py-4">{{alum.email}}</td>
+                <td class="px-6 py-4">
+                    <a href="eliminarAlumno?alumno={{alum.id}}&curso={{curso.id}}" type="button" class="text-danger bg-neutral-primary border border-danger hover:bg-danger hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</a>
+                </td>
+                
+            </tr>
+        {%endfor%}    
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+<div>
+<h2>Agregar alumnos al curso</h2>
+
+    <table class="w-full text-sm text-left rtl:text-right text-body">
+        <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
+            <tr>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Nombre
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Apellidos
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Email
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Agregar
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+          {%for alum in alumnos_disponibles%}
+            <tr class="bg-neutral-primary-soft border-b  border-default">
+                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">{{alum.nombre}}
+                </th>
+               <td class="px-6 py-4">{{alum.apellidos}}</td>
+               <td class="px-6 py-4">{{alum.email}}</td>
+                <td class="px-6 py-4">
+                    <a href="agregarAlumno?alumno={{alum.id}}&curso={{curso.id}}" type="button" class="text-danger bg-neutral-primary border border-danger hover:bg-danger hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">agregar</a>
+                </td>
+                
+            </tr>
+        {%endfor%}    
+        </tbody>
+    </table>
+    
+</div>
+</div>
+
+<br>
+
+<div class="mt-4">
+    <a href="/ListadoCursos"
+       class="text-danger bg-neutral-primary border border-danger hover:bg-danger hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+       Cancelar
+    </a>
+</div>
+
+
+
+
+
+{%endblock%}

@@ -9,17 +9,16 @@
     </a>
     <a href="#">
         <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading">Nombre: {{nombre}}</h5>
-        <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading">Apellidos: {{apellidos}}</h5>
+        <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading">Descripcion: {{descripcion}}</h5>
     </a>
-    <p class="mb-6 text-body">Email: {{email}}</p>
-    <p class="mb-6 text-body">Telefono: {{telefono}}</p>
-    <a href="/listadoAlumnos" type="button" class="text-success bg-neutral-primary border border-success hover:bg-success hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Regresar</a>
+    <p class="mb-6 text-body">Maestro: {{maestro}}</p>
+    <a href="/ListadoCursos" type="button" class="text-success bg-neutral-primary border border-success hover:bg-success hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Regresar</a>
     <a type="button" class="text-warning bg-neutral-primary border border-warning hover:bg-warning hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Editar</a>
 </div>
 
-
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
-    <h1 style="text-align: center;">Cursos inscritos</h1>
+    <div>
+    <h2>Alumnos en el curso</h2>
     <table class="w-full text-sm text-left rtl:text-right text-body">
         <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
             <tr>
@@ -27,25 +26,24 @@
                     Nombre
                 </th>
                 <th scope="col" class="px-6 py-3 font-medium">
-                    Descripcion
+                    Apellidos
                 </th>
-                <th scope="col" class="px-6 py-3 font-medaium">
-                    Maestro
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Email
                 </th>
             </tr>
         </thead>
         <tbody>
-          {%for cursos in cursos%}
+          {%for alum in alumnos_curso%}
             <tr class="bg-neutral-primary-soft border-b  border-default">
-                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">{{cursos.nombre}}
+                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">{{alum.nombre}}
                 </th>
-               <td class="px-6 py-4">{{cursos.descripcion}}</td>
-               <td class="px-6 py-4">{{cursos.maestro.nombre}}</td> 
+               <td class="px-6 py-4">{{alum.apellidos}}</td>
+               <td class="px-6 py-4">{{alum.email}}</td>
             </tr>
         {%endfor%}    
         </tbody>
     </table>
 </div>
-
 
 {%endblock%}
